@@ -160,7 +160,7 @@ def main():
             )
             ps.plot(fake_points.clip(-1, 1).cpu().numpy())
 
-            plt.savefig(f"{args.frame_dir}/{i:06d}.png")
+            plt.savefig(f"{args.frame_dir}/{i:06d}.png", bbox_inches="tight")
             plt.clf()
 
         images = sorted(args.frame_dir.glob("*.png"))
