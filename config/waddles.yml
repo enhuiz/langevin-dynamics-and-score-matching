@@ -1,0 +1,10 @@
+image: "waddles.png"
+threshold: 100
+n_samples: 5000
+n_iters: 50_000
+n_steps: 3000
+n_frames: 200
+batch_size: 20480
+η: 1.0e-3
+σ: 1.0e-2
+Ɛ: 1.0e-5
