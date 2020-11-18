@@ -26,8 +26,8 @@ This command produces a list of frames at the stages of sampling under `ring/` a
 
 ## Demo (with carefully tuned parameters)
 
-Left: sample from the real pixel distribution
-Right: sample by Langevin dynamics based on the score function learnt by denoising score matching.
+- Left: sample from the real pixel distribution
+- Right: sample using Langevin dynamics based on the score function learnt via denoising score matching.
 
 ### Ring
 
