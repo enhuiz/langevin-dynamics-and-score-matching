@@ -2,6 +2,12 @@
 
 ## How to?
 
+### Setup
+
+```
+pip install -r requirements.txt
+```
+
 ### Train
 
 ```
@@ -23,13 +29,19 @@ This command produces a list of frames at the stages of sampling under `ring/` a
 Left: sample from the real pixel distribution
 Right: sample by Langevin dynamics based on the score function learnt by denoising score matching.
 
+### Ring
+
 ![ring.gif](./ring.gif)
+
+### Waddles
 
 ![waddles.gif](./waddles.gif)
 
+### Stewie
+
 ![stewie.gif](./stewie.gif)
 
-### Reference
+## Reference
 
 - A good [lecture](https://youtu.be/3-KzIjoFJy4) on Langevin dynamics for sampling.
 - A [recent paper](https://arxiv.org/pdf/1907.05600.pdf) combining Langevin dynamics with denosing score matching with a more complicated multi-level pertubation scheme.

@@ -1,0 +1,8 @@
+numpy==1.18.5
+imageio==2.9.0
+tqdm==4.50.2
+torch==1.7.0
+~atplotlib==3.3.2
+matplotlib==3.3.3
+Pillow==8.0.1
+PyYAML==5.3.1
