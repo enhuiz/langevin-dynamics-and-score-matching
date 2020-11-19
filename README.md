@@ -14,7 +14,7 @@ pip install -r requirements.txt
 python3 main.py config/ring.yml train
 ```
 
-This command produces the model (learnt score function): `ring.pth`
+This command produces the model (learnt scaled score function): `ring.pth`
 
 ### Test
 

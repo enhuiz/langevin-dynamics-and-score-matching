@@ -49,7 +49,9 @@ class PixelSampler:
 class Model(nn.Module):
     def __init__(self, σ):
         super().__init__()
-        self.σ = σ
+        # std of the noise to add
+        self.σ = y
+        # score function scaled by σ (reparametrization)
         self.ψ = nn.Sequential(
             nn.Linear(2, 128),
             nn.LeakyReLU(0.2),
@@ -73,6 +75,7 @@ class Model(nn.Module):
         for _ in pbar:
             x = self.array2tensor(ps.sample(batch_size))
             z = torch.randn_like(x)
+            # Reparametrization: learn -z instead of the real gradient (-z / σ)
             loss = F.l1_loss(self.ψ(x + self.σ * z), -z)
             loss.backward()
             optimizer.step()
