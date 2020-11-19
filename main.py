@@ -46,14 +46,6 @@ class PixelSampler:
         return self.points[choices]
 
 
-class Residual(nn.Sequential):
-    def __init__(self, *layers):
-        super().__init__(*layers)
-
-    def forward(self, x):
-        return x + super().forward(x)
-
-
 class Model(nn.Module):
     def __init__(self, σ):
         super().__init__()
@@ -91,7 +83,7 @@ class Model(nn.Module):
     def sample(self, n_samples, n_steps, Ɛ, x=None):
         sqrt_Ɛ = math.sqrt(Ɛ)
         if x is None:
-            # uniformly sample from the canvase
+            # uniformly sample from the canvas
             x = torch.rand([n_samples, 2], device=self.device) * 2 - 1
         for _ in range(n_steps):
             z = torch.randn_like(x)
