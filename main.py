@@ -50,9 +50,9 @@ class Model(nn.Module):
     def __init__(self, σ):
         super().__init__()
         # std of the noise to add
-        self.σ = y
+        self.σ = σ
         # score function scaled by σ (reparametrization)
-        self.ψ = nn.Sequential(
+        self.σψ = nn.Sequential(
             nn.Linear(2, 128),
             nn.LeakyReLU(0.2),
             nn.Linear(128, 128),
@@ -70,13 +70,13 @@ class Model(nn.Module):
         return torch.from_numpy(x).float().to(self.device)
 
     def train(self, ps, n_iters, batch_size=32, η=1e-3):
-        optimizer = torch.optim.Adam(self.ψ.parameters(), lr=η)
+        optimizer = torch.optim.Adam(self.σψ.parameters(), lr=η)
         pbar = tqdm.trange(n_iters)
         for _ in pbar:
             x = self.array2tensor(ps.sample(batch_size))
             z = torch.randn_like(x)
             # Reparametrization: learn -z instead of the real gradient (-z / σ)
-            loss = F.l1_loss(self.ψ(x + self.σ * z), -z)
+            loss = F.l1_loss(self.σψ(x + self.σ * z), -z)
             loss.backward()
             optimizer.step()
             optimizer.zero_grad()
@@ -90,7 +90,7 @@ class Model(nn.Module):
             x = torch.rand([n_samples, 2], device=self.device) * 2 - 1
         for _ in range(n_steps):
             z = torch.randn_like(x)
-            x = x + 0.5 * Ɛ * self.ψ(x) / self.σ + sqrt_Ɛ * z
+            x = x + 0.5 * Ɛ * self.σψ(x) / self.σ + sqrt_Ɛ * z
         return x
 
 
