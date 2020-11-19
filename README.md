@@ -24,7 +24,7 @@ python3 main.py config/ring.yml test
 
 This command produces a list of frames at each stage of sampling under `ring/` and an animation `ring.gif` made from them.
 
-## Demo (with carefully tuned hyper-parameters)
+## Demo (with carefully tuned hyperparameters)
 
 - Left: sample from the real pixel distribution
 - Right: sample using Langevin dynamics based on the score function learnt via denoising score matching.
